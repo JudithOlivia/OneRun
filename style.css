@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, Arial, Helvetica;
+}
+
+.background{
+    height: 100vh;
+    width: 100vh;
+    background: url(bg.png) no-repeat center center fixed;
+    -website-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.superman{
+    height: 100px;
+    width: 130 px;
+    position: fixed;
+    top: 40vh;
+    left: 30vh;
+    z-index: 100;
+}
+
+
