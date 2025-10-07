@@ -24,4 +24,51 @@
     z-index: 100;
 }
 
+pipe_sprinter{
+    position:fixed;
+    top:  40vh;
+    left: 100vh;
+    height:70vh;
+    width:6vw;
+    background: radial-gradient(lightgreen 50%, green);
+    border: 3px solid black; 
+
+}
+
+.message{
+    position: absolute; 
+    z-index: 10;
+    color: black;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.messageStyle{
+    background: white;
+    padding: 30px;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5%;
+}
+
+.score{
+    position: fixed;
+    z-index: 10;
+    height: 10vh;
+    font-size: 10vh;
+    color: white;
+    -website-text-stroke-width: 2px;
+    -website-text-stroke-color: black;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+.score_vol{
+    color: gold;
+    font-weight: bold;
+}
+
+
 
