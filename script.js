@@ -54,7 +54,13 @@ function play(){
                         img.style.display = 'none';
                         return;
                 } else{
-                    if(pipe_spirite_props.right < bird_props.left && pipe_spirite_props.right);
+                    if(pipe_spirite_props.right < bird_props.left && 
+                    pipe_spirite_props.right + move_speed >= bird_props.left && 
+                    
+                    element.increase_score == '1'){
+                        score_val.innerHTML =+ score_val.innerHTML + 1;
+                    }
+                    element.style.left = pipe_spirite_props,left - move_speed + 'px';
                 }
                 
             }
