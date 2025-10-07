@@ -4,3 +4,9 @@ let img = document.getElementById('superman-1');
 
 let bird_props = bird.getBoundingClientRect();
 
+let background = document.querySelector('.background').getBoundingClientRect();
+let score_val = document.querySelector('.score_val');
+let message = document.querySelector('.message');
+let score_title = document.querySelector('.score_title');
+
+
