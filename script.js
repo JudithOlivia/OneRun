@@ -29,3 +29,35 @@ document.addEventListener('keydown', (e) => {
         play();
     }
 });
+
+function play(){
+    function move(){
+        if(game_state != 'Play') return;
+
+        let pipe_spirite = document.querySelectorAll('.pipe_sprite');
+        pipe_spirite.forEach((element) => {
+            let pipe_spirite_props = element.getBoundingClientRect();
+            bird_props = bird.getBoundingClientRect();
+
+            if(pipe_spirite_props.right <= 0){
+                element.remove();
+            }
+            else{
+                if(bird_props.left < pipe_spirite_props.left + pipe_spirite_props. 
+                    width && bird_props.left + bird_props.width > pipe_spirite_props.
+                    left && bird_props.top < pipe_spirite_props.top + 
+                    pipe_spirite_props.height && bird_props.top + bird_props.height 
+                    > pipe_spirite_props.top){
+                        game_state = 'End';
+                        message.innerHTML = 'Game Over' .fontcolor('red') + '<br> Press Enter To Restart';
+                        message.classList.add('messageStyle');
+                        img.style.display = 'none';
+                        return;
+                } else{
+                    if(pipe_spirite_props.right < bird_props.left && pipe_spirite_props.right);
+                }
+                
+            }
+        })
+    }
+}
