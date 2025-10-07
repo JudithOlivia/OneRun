@@ -68,4 +68,6 @@ function play(){
         requestAnimationFrame(move);
     }
     requestAnimationFrame(move);
+
+    let bird_dy = 0; 
 }
