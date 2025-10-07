@@ -14,8 +14,18 @@ img.style.display = 'none';
 message.classList.add('messageStyle');
 
 document.addEventListener('keydown', (e) => {
-    if(e.key == 'Enter' && game_state != 'Play')
+    if(e.key == 'Enter' && game_state != 'Play'){
         DocumentType.querySelectorAll('.pipe_sprite').forEach((e) => {
             e.remover();
         })
-})
+
+        img.style.display = 'block';
+        bird.style.top = '40vh';
+        game_state = 'Play';
+        message.innerHTML = '';
+        score_title.innerHTML = 'Score : ';
+        score_val.innerHTML = '0';
+        message.classList.remove('messageStyle');
+        play();
+    }
+});
