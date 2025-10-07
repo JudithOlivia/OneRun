@@ -70,4 +70,5 @@ function play(){
     requestAnimationFrame(move);
 
     let bird_dy = 0; 
+    /* Apply Gravity */
 }
