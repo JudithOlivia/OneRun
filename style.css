@@ -85,5 +85,11 @@ pipe_sprinter{
         width: 120px;
         height: 90px
     }
+
+    .pipe_sprinter{
+        width: 14vw;
+    }
 }
+
+
 
