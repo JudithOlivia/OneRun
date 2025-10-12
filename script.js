@@ -1,4 +1,4 @@
-let move_speed = 3
+let move_speed = 3;
 let gravity = 0.5;
 let bird = document.querySelector('.superman');
 let img = document.getElementById('superman-1');
@@ -12,6 +12,9 @@ let birdDy = 0;
 let pipeSeparation = 0;
 const pipeGap = 35;
 
+// Initialize bird_props at the top
+let bird_props = bird.getBoundingClientRect();
+
 img.style.display = 'none';
 message.classList.add('messageStyle');
 
@@ -19,7 +22,7 @@ document.addEventListener('keydown', (e) => {
     if(e.key == 'Enter' && game_state != 'Play'){
         startGame();
     }
-    if ((e.key === ' ' || e.key === 'ArrowUp') && gameState === 'Play') {
+    if ((e.key === ' ' || e.key === 'ArrowUp') && game_state === 'Play') {
         flap();
     }
 });
@@ -28,19 +31,22 @@ function startGame() {
     document.querySelectorAll('.pipe_sprite').forEach(pipe => {
         pipe.remove();
     });
-        img.style.display = 'block';
-        bird.style.top = '40vh';
-        game_state = 'Play';
-        message.innerHTML = '';
-        score_title.innerHTML = 'Score : ';
-        score_val.innerHTML = '0';
-        message.classList.remove('messageStyle');
-        play();
+    
+    img.style.display = 'block';
+    bird.style.top = '40vh';
+    game_state = 'Play';
+    birdDy = 0;
+    message.innerHTML = '';
+    score_title.innerHTML = 'Score : ';
+    score_val.innerHTML = '0';
+    message.classList.remove('messageStyle');
+    
+    // Reset bird_props
+    bird_props = bird.getBoundingClientRect();
+    play();
 }
 
-
 function flap() {
-    img.src = 'superman.png';
     birdDy = -7.6;
 }
 
@@ -51,13 +57,14 @@ function play() {
 }
 
 function movePipes() {
-    if (gameState !== 'Play') return;
+    if (game_state !== 'Play') return;
 
     const pipes = document.querySelectorAll('.pipe_sprite');
     let scored = false;
 
     pipes.forEach((pipe) => {
         const pipeRect = pipe.getBoundingClientRect();
+        // Update bird_props
         bird_props = bird.getBoundingClientRect();
 
         if (pipeRect.right <= 0) {
@@ -77,11 +84,13 @@ function movePipes() {
             }
         }
 
-        pipe.style.left = (pipeRect.left - moveSpeed) + 'px';
+        // Use move_speed instead of moveSpeed
+        pipe.style.left = (pipeRect.left - move_speed) + 'px';
     });
 
     if (scored) {
-        scoreVal.innerHTML = parseInt(scoreVal.innerHTML) + 1;
+        // Use score_val instead of scoreVal
+        score_val.innerHTML = parseInt(score_val.innerHTML) + 1;
     }
 
     requestAnimationFrame(movePipes);
@@ -95,13 +104,16 @@ function checkCollision(birdRect, pipeRect) {
 }
 
 function applyGravity() {
-    if (gameState !== 'Play') return;
+    if (game_state !== 'Play') return;
 
     birdDy += gravity;
     
+    // Update bird_props before using it
+    bird_props = bird.getBoundingClientRect();
     const newTop = bird_props.top + birdDy;
     bird.style.top = newTop + 'px';
     
+    // Update bird_props after moving
     bird_props = bird.getBoundingClientRect();
 
     if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
@@ -113,7 +125,7 @@ function applyGravity() {
 }
 
 function createPipes() {
-    if (gameState !== 'Play') return;
+    if (game_state !== 'Play') return;
 
     if (pipeSeparation > 115) {
         pipeSeparation = 0;
@@ -139,9 +151,8 @@ function createPipes() {
 }
 
 function endGame() {
-    gameState = 'End';
+    game_state = 'End';
     message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Restart';
     message.classList.add('messageStyle');
     img.style.display = 'none';
 }
-let bird_props = bird.getBoundingClientRect();

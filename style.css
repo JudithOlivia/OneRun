@@ -21,13 +21,14 @@ body {
 }
 
 .superman{
-    height: 80px;
-    width: 100px;
+    height: auto;
+    width: 150px;
     position: absolute;
     top: 40vh;
     left: 20vw;
     z-index: 100;
     transition: transform 0.1s ease;
+    object-fit: contain;
 }
 
 .pipe_sprite{
