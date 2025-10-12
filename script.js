@@ -1,4 +1,4 @@
-let move_speed = 3;
+let move_speed = 4;
 let gravity = 0.45;
 let bird = document.querySelector('.superman');
 let img = document.getElementById('superman-1');
@@ -10,7 +10,7 @@ let score_title = document.querySelector('.score_title');
 let game_state = 'Start';
 let birdDy = 0;
 let pipeSeparation = 0;
-const pipeGap = 44;
+const pipeGap = 40;
 const pipeWidth = 79;
 
 let bird_props = bird.getBoundingClientRect();
