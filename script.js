@@ -10,8 +10,8 @@ let score_title = document.querySelector('.score_title');
 let game_state = 'Start';
 let birdDy = 0;
 let pipeSeparation = 0;
-const pipeGap = 45;
-const pipeWidth = 85;
+const pipeGap = 44;
+const pipeWidth = 79;
 
 let bird_props = bird.getBoundingClientRect();
 
