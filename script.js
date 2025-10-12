@@ -1,5 +1,5 @@
 let move_speed = 3;
-let gravity = 0.5;
+let gravity = 0.45;
 let bird = document.querySelector('.superman');
 let img = document.getElementById('superman-1');
 let background = document.querySelector('.background').getBoundingClientRect();
