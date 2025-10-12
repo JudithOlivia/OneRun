@@ -10,9 +10,9 @@ let score_title = document.querySelector('.score_title');
 let game_state = 'Start';
 let birdDy = 0;
 let pipeSeparation = 0;
-const pipeGap = 35;
+const pipeGap = 45;
+const pipeWidth = 85;
 
-// Initialize bird_props at the top
 let bird_props = bird.getBoundingClientRect();
 
 img.style.display = 'none';
@@ -36,12 +36,12 @@ function startGame() {
     bird.style.top = '40vh';
     game_state = 'Play';
     birdDy = 0;
+    pipeSeparation = 0;
     message.innerHTML = '';
     score_title.innerHTML = 'Score : ';
     score_val.innerHTML = '0';
     message.classList.remove('messageStyle');
     
-    // Reset bird_props
     bird_props = bird.getBoundingClientRect();
     play();
 }
@@ -64,7 +64,6 @@ function movePipes() {
 
     pipes.forEach((pipe) => {
         const pipeRect = pipe.getBoundingClientRect();
-        // Update bird_props
         bird_props = bird.getBoundingClientRect();
 
         if (pipeRect.right <= 0) {
@@ -84,12 +83,10 @@ function movePipes() {
             }
         }
 
-        // Use move_speed instead of moveSpeed
         pipe.style.left = (pipeRect.left - move_speed) + 'px';
     });
 
     if (scored) {
-        // Use score_val instead of scoreVal
         score_val.innerHTML = parseInt(score_val.innerHTML) + 1;
     }
 
@@ -108,12 +105,11 @@ function applyGravity() {
 
     birdDy += gravity;
     
-    // Update bird_props before using it
     bird_props = bird.getBoundingClientRect();
     const newTop = bird_props.top + birdDy;
     bird.style.top = newTop + 'px';
+    bird_props = bird.getBoundingClientRect();
     
-    // Update bird_props after moving
     bird_props = bird.getBoundingClientRect();
 
     if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
@@ -134,16 +130,22 @@ function createPipes() {
         
         const topPipe = document.createElement('div');
         topPipe.className = 'pipe_sprite';
-        topPipe.style.top = (pipePosition - 70) + 'vh';
+        topPipe.style.top = '0px';
         topPipe.style.left = '100vw';
+        topPipe.style.height = pipePosition + 'vh';
+        topPipe.style.width = pipeWidth + 'px';
         document.body.appendChild(topPipe);
 
         const bottomPipe = document.createElement('div');
         bottomPipe.className = 'pipe_sprite';
         bottomPipe.style.top = (pipePosition + pipeGap) + 'vh';
         bottomPipe.style.left = '100vw';
+        bottomPipe.style.height = (100 - pipePosition - pipeGap) + 'vh';
+        bottomPipe.style.width = pipeWidth + 'px';
         bottomPipe.increase_score = '1';
         document.body.appendChild(bottomPipe);
+
+        console.log('Pipe created at position:', pipePosition);
     }
     
     pipeSeparation++;
