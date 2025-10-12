@@ -31,8 +31,9 @@ body {
     object-fit: contain;
 }
 
-.pipe_sprite{
+.pipe_sprite {
     position: absolute;
+    width: 80px;
     background: radial-gradient(lightgreen 50%, green);
     border: 3px solid black;
     z-index: 50;
