@@ -5,91 +5,92 @@
     font-family: sans-serif, Arial, Helvetica;
 }
 
+body {
+    overflow: hidden;
+}
+
 .background{
     height: 100vh;
-    width: 210vh;
-    background: url(bg.png) no-repeat center center fixed;
+    width: 100vw;
+    background: url('bg.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: relative;
+    background-size: cover;
+    position: relative;
 }
 
 .superman{
-    height: 100px;
-    width: 130 px;
-    position: fixed;
+    height: 80px;
+    width: 100px;
+    position: absolute;
     top: 40vh;
-    left: 30vh;
+    left: 20vw;
     z-index: 100;
+    transition: transform 0.1s ease;
 }
 
-pipe_sprinter{
-    position:fixed;
-    top:  70vh;
-    left: 100vh;
-    height:70vh;
-    width:6vw;
+.pipe_sprite{
+    position: absolute;
     background: radial-gradient(lightgreen 50%, green);
-    border: 3px solid black; 
-
+    border: 3px solid black;
+    z-index: 50;
 }
 
 .message{
     position: absolute; 
-    z-index: 10;
+    z-index: 200;
     color: black;
-    top: 30%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .messageStyle{
     background: white;
     padding: 30px;
-    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 5%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    border: 2px solid #333;
 }
 
 .score{
-    position: fixed;
-    z-index: 10;
-    height: 10vh;
-    font-size: 10vh;
+    position: absolute;
+    z-index: 200;
+    font-size: 40px;
+    font-weight: bold;
     color: white;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
-    top: 0;
-    left: 0;
-    margin: 10px;
+    top: 20px;
+    left: 20px;
 }
 
-.score_vol{
+.score_val{
     color: gold;
     font-weight: bold;
 }
 
-@media only screen and (max-width : 1080px){
+@media only screen and (max-width: 1080px){
     .message{
-        font-size: 50px;
+        font-size: 20px;
         top: 50%;
-        white-space:nonwrap;
+        white-space: nowrap;
     }
 
     .score{
-        font-size: 8vh;
+        font-size: 30px;
     }
 
     .superman{
-        width: 120px;
-        height: 90px
+        width: 80px;
+        height: 60px;
     }
 
-    .pipe_sprinter{
-        width: 14vw;
+    .pipe_sprite{
+        width: 60px;
     }
 }
-
-
-
